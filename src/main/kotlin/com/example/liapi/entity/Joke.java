@@ -1,18 +1,18 @@
 package com.example.liapi.entity;
 
 public class Joke {
-//    private int id;
+    private int id;
     private String jokeId = "";
     private String content = "";
     private String themeId = "";
 
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getJokeId() {
         return jokeId;
