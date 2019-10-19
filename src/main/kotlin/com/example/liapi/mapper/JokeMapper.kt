@@ -9,8 +9,8 @@ import org.apache.ibatis.annotations.Update
 import org.springframework.stereotype.Repository
 
 @Repository
-interface JokeMapper {
-    @Insert("INSERT INTO `joke` VALUES(#{jokeId,jdbcType=VARCHAR},#{title,jdbcType=VARCHAR})")
+interface JokeMapper {//#{id,jdbcType=INTEGER},
+    @Insert("INSERT INTO `joke` VALUES(#{jokeId,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{themeId,jdbcType=VARCHAR})")
     fun addJoke(joke: Joke):Int
 
     @Delete("DELETE FROM `joke` WHERE joke_id = #{jokeId,jdbcType=VARCHAR}")
