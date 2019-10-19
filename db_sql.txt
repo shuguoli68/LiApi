@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `joke_theme` (
 CREATE TABLE IF NOT EXISTS `joke` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `joke_id` varchar(50) NOT NULL,
-  `content` varchar(255) NOT NULL,
+  `content` varchar(8000) NOT NULL,
   `theme_id` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -48,4 +48,4 @@ VALUES
                  我妈：你活该，谁让你快30了还没女朋友！
                  我。。。', '1001');
 
-
+(1, '1004', '老爸经常对我说：孩子你要多读书，所谓行千里路，读万卷书。读书破万卷，下笔如有神，书是人类进步的阶梯。。。(此处省略5000字)老爸经常对我说：孩子你要多读书，所谓行千里路，读万卷书。读书破万卷，下笔如有神，书是人类进步的阶梯。。。(此处省略5000字)老爸经常对我说：孩子你要多读书，所谓行千里路，读万卷书。读书破万卷，下笔如有神，书是人类进步的阶梯。。。(此处省略5000字)老爸经常对我说：孩子你要多读书，所谓行千里路，读万卷书。读书破万卷，下笔如有神，书是人类进步的阶梯。。。(此处省略5000字)老爸经常对我说：孩子你要多读书，所谓行千里路，读万卷书。读书破万卷，下笔如有神，书', '1001');
