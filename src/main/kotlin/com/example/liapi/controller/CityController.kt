@@ -3,6 +3,7 @@ package com.example.liapi.controller
 
 import com.example.liapi.base.MyResponse
 import com.example.liapi.entity.City
+import com.example.liapi.entity.Joke
 import com.example.liapi.entity.Split
 import com.example.liapi.mapper.CityMapper
 import com.github.pagehelper.PageHelper
@@ -61,6 +62,19 @@ class CityController {
             return response
         }
         response.msg = "删除失败，从数据库删除失败"
+        return response
+    }
+
+    @RequestMapping(value = ["/city/listById"], method = [RequestMethod.POST])
+    fun listById(@RequestBody city: City) : MyResponse<List<City>> {
+        var response = MyResponse(201, "cityId为空", listOf<City>())
+        if (city.cityId.isNullOrBlank()){
+            return response
+        }
+        val list = cityMapper.queryById(city.cityId)
+        response.msg = "查询成功"
+        response.code = 200
+        response.data = list
         return response
     }
 

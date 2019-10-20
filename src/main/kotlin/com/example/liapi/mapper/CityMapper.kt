@@ -16,8 +16,8 @@ interface CityMapper {
     @Delete("DELETE FROM `cities` WHERE cityid = #{cityId,jdbcType=VARCHAR}")
     fun delCity(cityId: String):Int
 
-    @Update("UPDATE `city`\n" +
-            "        SET city = #{city,jdbcType=VARCHAR}, provinceId = #{provinceId,jdbcType=CHAR}\n" +
+    @Update("UPDATE `cities`\n" +
+            "        SET city = #{city,jdbcType=VARCHAR}, provinceid = #{provinceId,jdbcType=CHAR}\n" +
             "        WHERE cityid = #{cityId,jdbcType=VARCHAR}")
     fun upCity(city: City):Int
 
