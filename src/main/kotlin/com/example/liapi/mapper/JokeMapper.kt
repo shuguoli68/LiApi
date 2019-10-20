@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Update
 import org.springframework.stereotype.Repository
 
 @Repository
-interface JokeMapper {//
+interface JokeMapper {
     @Insert("INSERT INTO `joke` VALUES(#{id,jdbcType=INTEGER},#{jokeId,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{themeId,jdbcType=VARCHAR})")
     fun addJoke(joke: Joke):Int
 

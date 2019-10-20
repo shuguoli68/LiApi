@@ -2,6 +2,7 @@ package com.example.liapi.controller
 
 import com.example.liapi.base.MyResponse
 import com.example.liapi.entity.Joke
+import com.example.liapi.entity.JokeTheme
 import com.example.liapi.entity.Split
 import com.example.liapi.mapper.JokeMapper
 import com.github.pagehelper.Page
@@ -75,6 +76,19 @@ class JokeController {
         PageHelper.startPage<Joke>(pageNum, pageSize)
         val list = jokeMapper.listByThemeId(themeId)
         return MyResponse(200, "查询成功", list)
+    }
+
+    @RequestMapping(value = ["/joke/listById"], method = [RequestMethod.POST])
+    fun listById(@RequestBody joke: Joke) : MyResponse<List<Joke>> {
+        var response = MyResponse(201, "JokeId为空", listOf<Joke>())
+        if (joke.jokeId.isNullOrBlank()){
+            return response
+        }
+        val list = jokeMapper.queryById(joke.jokeId)
+        response.msg = "查询成功"
+        response.code = 200
+        response.data = list
+        return response
     }
 
     @RequestMapping(value = ["/joke/list"], method = [RequestMethod.POST])

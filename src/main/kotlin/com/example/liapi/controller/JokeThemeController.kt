@@ -2,6 +2,7 @@ package com.example.liapi.controller
 
 import com.example.liapi.base.MyResponse
 import com.example.liapi.entity.JokeTheme
+import com.example.liapi.entity.Province
 import com.example.liapi.entity.Split
 import com.example.liapi.mapper.JokeThemeMapper
 import com.github.pagehelper.PageHelper
@@ -60,6 +61,19 @@ class JokeThemeController {
             return response
         }
         response.msg = "删除失败，从数据库删除失败"
+        return response
+    }
+
+    @RequestMapping(value = ["/jokeTheme/listById"], method = [RequestMethod.POST])
+    fun listProvincesById(@RequestBody jokeTheme: JokeTheme) : MyResponse<List<JokeTheme>> {
+        var response = MyResponse(201, "JokeThemeId为空", listOf<JokeTheme>())
+        if (jokeTheme.themeId.isNullOrBlank()){
+            return response
+        }
+        val list = jokeThemeMapper.queryById(jokeTheme.themeId)
+        response.msg = "查询成功"
+        response.code = 200
+        response.data = list
         return response
     }
 
