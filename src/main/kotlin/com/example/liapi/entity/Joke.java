@@ -1,7 +1,7 @@
 package com.example.liapi.entity;
 
 public class Joke {
-    private int id;
+    private int id = 0;
     private String jokeId = "";
     private String content = "";
     private String themeId = "";

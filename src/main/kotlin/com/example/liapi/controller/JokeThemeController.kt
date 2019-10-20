@@ -3,7 +3,6 @@ package com.example.liapi.controller
 import com.example.liapi.base.MyResponse
 import com.example.liapi.entity.JokeTheme
 import com.example.liapi.entity.Split
-import com.example.liapi.mapper.JokeMapper
 import com.example.liapi.mapper.JokeThemeMapper
 import com.github.pagehelper.PageHelper
 import org.springframework.beans.factory.annotation.Autowired
@@ -26,7 +25,14 @@ class JokeThemeController {
         }
         val list = jokeThemeMapper.queryById(jokeTheme.themeId)
         if (list.isNotEmpty()){
-            response.msg = "添加失败，该JokeTheme已存在"
+            val value = jokeThemeMapper.upJokeTheme(jokeTheme)
+            if (value > 0){
+                response.msg = "该JokeTheme已存在，更新成功"
+                response.code = 200
+                response.data = true
+                return response
+            }
+            response.msg = "该JokeTheme已存在，更新失败，存入数据库失败"
             return response
         }
         val value = jokeThemeMapper.addJokeTheme(jokeTheme)
@@ -54,23 +60,6 @@ class JokeThemeController {
             return response
         }
         response.msg = "删除失败，从数据库删除失败"
-        return response
-    }
-
-    @RequestMapping(value = ["/jokeTheme/update"], method = [RequestMethod.POST])
-    fun upJokeTheme(@RequestBody jokeTheme: JokeTheme) : MyResponse<Boolean> {
-        var response = MyResponse(201, "标题或内容为空", false)
-        if (jokeTheme.title.isNullOrBlank() || jokeTheme.title.isNullOrBlank()){
-            return response
-        }
-        val value = jokeThemeMapper.upJokeTheme(jokeTheme)
-        if (value>0){
-            response.msg = "修改成功"
-            response.code = 200
-            response.data = true
-            return response
-        }
-        response.msg = "修改失败，存入数据库失败"
         return response
     }
 

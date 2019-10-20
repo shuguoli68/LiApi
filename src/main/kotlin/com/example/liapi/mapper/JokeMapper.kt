@@ -17,12 +17,15 @@ interface JokeMapper {//
     fun delJoke(jokeId: String):Int
 
     @Update("UPDATE `joke`\n" +
-            "        SET title = #{title,jdbcType=VARCHAR}, content = #{content,jdbcType=VARCHAR}\n" +
+            "        SET theme_id = #{themeId,jdbcType=VARCHAR}, content = #{content,jdbcType=VARCHAR}\n" +
             "        WHERE joke_id = #{jokeId,jdbcType=VARCHAR}")
     fun upJoke(joke: Joke):Int
 
     @Select("SELECT * FROM `joke` WHERE joke_id = #{jokeId,jdbcType=VARCHAR}")
     fun queryById(jokeId:String):List<Joke>
+
+    @Select("SELECT * FROM `joke` WHERE theme_id = #{themeId,jdbcType=VARCHAR}")
+    fun listByThemeId(themeId:String):Page<Joke>
 
     @Select("select * from `joke`")
     fun listJoke():Page<Joke>

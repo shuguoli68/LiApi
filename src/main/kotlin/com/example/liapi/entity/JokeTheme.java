@@ -1,11 +1,20 @@
 package com.example.liapi.entity;
 
 public class JokeTheme {
-    private String themeId;
-    private String title;
-    private String brief;
-    private String picUrl;
-    private int count;
+    private int id;
+    private String themeId = "";
+    private String title = "";
+    private String brief = "";
+    private String picUrl = "";
+    private int count = 1;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getThemeId() {
         return themeId;

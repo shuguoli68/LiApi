@@ -1,22 +1,20 @@
 # LiApi
 ### 说明：  
-一个后台应用，只写api接口。  
+一个后台应用，只写api接口，所有的请求和回复均使用json数据格式。  
 由于各大数据平台不再提供免费的api接口，实行实名制或次数有限，故此自己编写api接口。
-不仅可以练习编写Java后台程序，还可以在学习前端知识框架时给自己提供api接口 
+不仅可以练习编写Java后台程序，还可以在学习前端知识框架时给自己提供api接口。 
 
 ### 开发环境、工具：  
-IntelliJ IDEA 2019.2.1 x64  Community版  
-SpringBoot + Mybatis,数据存储在UniServer，一个小的无需安装的数据库软件  
-框架：Mybatis、pagehelper
-
+* IntelliJ IDEA 2019.2.1 x64  Community版  
+* SpringBoot + Mybatis,数据存储在UniServer，一个小的无需安装的数据库软件  
+* 框架：Mybatis、pagehelper
+* Postman调试
 ### 接口示例  
-1、获取joke列表  
-
 url:
 ```
-http://127.0.0.1:8080/joke/list
+http://127.0.0.1:8080/jokeTheme/list
 ```
-request:
+requestBody:
 ```
 {
 	"pageNum":1,
@@ -30,20 +28,34 @@ response:
     "msg": "查询成功",
     "data": [
         {
-            "jokeId": "1001",
-            "content": "老爸经常对我说：“孩子你要多读书，所谓行千里路，读万卷书。读书破万卷，下笔如有神，书是人类进步的阶梯。。。(此处省略5000字)”\r\n\r\n                 后来我长大了，听到别人说“人丑就要多读书”，才明白老爸真是用心良苦！！！",
-            "themeId": "1001"
+            "id": 1,
+            "themeId": "1001",
+            "title": "冷笑话",
+            "brief": "冷冷的生活小讽刺",
+            "picUrl": "http://dkj.jpg",
+            "count": 2458
         },
         {
-            "jokeId": "1002",
-            "content": "昨晚跟麻麻讲电话，妈妈又开始念经了，让我今年要么带对象回家过年，要么跟对象回他家过年，不然后果自负！\r\n\r\n    我想了想，跟妈妈说：“那没辙了，我想人家动物园也不能同意啊！ ”",
-            "themeId": "1001"
+            "id": 2,
+            "themeId": "1002",
+            "title": "幽默",
+            "brief": "幽默有趣的逗B笑段",
+            "picUrl": "http://dkj.jpg",
+            "count": 2458
         },
         {
-            "jokeId": "1003",
-            "content": "我：妈，我肚子疼。\r\n\r\n                 我妈：你活该，谁让你考试总是及格！\r\n                 我。。。\r\n                 我：妈，我肚子饿。\r\n                 我妈：你活该，谁让你快30了还没女朋友！\r\n                 我。。。",
-            "themeId": "1001"
+            "id": 4,
+            "themeId": "1004",
+            "title": "内涵",
+            "brief": "搞笑的吹牛、内涵冷段子",
+            "picUrl": "http://d9894u.png",
+            "count": 1
         }
     ]
 }
 ```
+  
+### 各个接口（CRUD）：  
+[1、jokeTheme：笑话得到分类](jokeTheme.md)  
+[2、joke：笑话](..docs/joke.md)  
+

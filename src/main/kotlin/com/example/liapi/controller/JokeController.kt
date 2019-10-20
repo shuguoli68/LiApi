@@ -4,6 +4,7 @@ import com.example.liapi.base.MyResponse
 import com.example.liapi.entity.Joke
 import com.example.liapi.entity.Split
 import com.example.liapi.mapper.JokeMapper
+import com.github.pagehelper.Page
 import com.github.pagehelper.PageHelper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestBody
@@ -25,7 +26,14 @@ class JokeController {
         }
         val list = jokeMapper.queryById(joke.jokeId)
         if (list.isNotEmpty()){
-            response.msg = "添加失败，该Joke已存在"
+            val value = jokeMapper.upJoke(joke)
+            if (value>0){
+                response.msg = "该Joke已存在，更新成功"
+                response.code = 200
+                response.data = true
+                return response
+            }
+            response.msg = "该Joke已存在，更新失败，存入数据库失败"
             return response
         }
         val value = jokeMapper.addJoke(joke)
@@ -56,21 +64,17 @@ class JokeController {
         return response
     }
 
-    @RequestMapping(value = ["/joke/update"], method = [RequestMethod.POST])
-    fun upJoke(@RequestBody joke: Joke) : MyResponse<Boolean> {
-        var response = MyResponse(201, "标题或内容为空", false)
-        if (joke.jokeId.isNullOrBlank() || joke.content.isNullOrBlank()){
-            return response
+    @RequestMapping(value = ["/joke/listByThemeId"], method = [RequestMethod.POST])
+    fun listByThemeId(@RequestBody request:Map<String, Any>) : MyResponse<List<Joke>> {
+        val pageNum = request["pageNum"] as Int
+        val pageSize = request["pageSize"] as Int
+        val themeId = request["themeId"] as String
+        if (pageNum == null || pageSize == null || themeId.isNullOrBlank()){
+            return MyResponse(201, "查询失败，参数错误", Page<Joke>())
         }
-        val value = jokeMapper.upJoke(joke)
-        if (value>0){
-            response.msg = "修改成功"
-            response.code = 200
-            response.data = true
-            return response
-        }
-        response.msg = "修改失败，存入数据库失败"
-        return response
+        PageHelper.startPage<Joke>(pageNum, pageSize)
+        val list = jokeMapper.listByThemeId(themeId)
+        return MyResponse(200, "查询成功", list)
     }
 
     @RequestMapping(value = ["/joke/list"], method = [RequestMethod.POST])
