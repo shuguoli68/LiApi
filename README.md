@@ -56,6 +56,7 @@ response:
 ```
   
 ### 各个接口（CRUD）：  
-[1、jokeTheme：笑话得到分类](https://github.com/shuguoli68/LiApi/blob/master/docs/jokeTheme.md)  
+[1、jokeTheme：笑话的分类](https://github.com/shuguoli68/LiApi/blob/master/docs/jokeTheme.md)  
 [2、joke：笑话](https://github.com/shuguoli68/LiApi/blob/master/docs/joke.md)  
+[3、province：省](https://github.com/shuguoli68/LiApi/blob/master/docs/province.md)  
 
