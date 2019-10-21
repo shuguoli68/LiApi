@@ -2,11 +2,9 @@ package com.example.liapi.mapper
 
 import com.example.liapi.entity.Province
 import com.github.pagehelper.Page
-import org.apache.ibatis.annotations.Delete
-import org.apache.ibatis.annotations.Insert
-import org.apache.ibatis.annotations.Select
-import org.apache.ibatis.annotations.Update
+import org.apache.ibatis.annotations.*
 import org.springframework.stereotype.Repository
+import kotlin.Result
 
 @Repository
 interface ProvinceMapper {
@@ -25,5 +23,14 @@ interface ProvinceMapper {
     fun queryById(provinceId:Int):List<Province>
 
     @Select("select * from `provinces`")
+    @Results(
+            Result(property = "provinceId", column = "provinceid"),
+            Result(property = "cities", column = "provinceid", many = Many(select = "com.example.liapi.mapper.CityMapper.queryByProvinceId")))
     fun listProvinces():Page<Province>
+
+    @Select("SELECT * FROM `provinces` WHERE provinceid = #{provinceId,jdbcType=VARCHAR}")
+    @Results(
+            Result(property = "provinceId", column = "provinceid"),
+            Result(property = "cities", column = "provinceid", many = Many(select = "com.example.liapi.mapper.CityMapper.queryByProvinceId")))
+    fun queryPC(provinceId:Int):Province
 }

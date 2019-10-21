@@ -4,8 +4,10 @@ package com.example.liapi.controller
 import com.example.liapi.base.MyResponse
 import com.example.liapi.entity.City
 import com.example.liapi.entity.Joke
+import com.example.liapi.entity.Province
 import com.example.liapi.entity.Split
 import com.example.liapi.mapper.CityMapper
+import com.github.pagehelper.Page
 import com.github.pagehelper.PageHelper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestBody
@@ -65,21 +67,14 @@ class CityController {
         return response
     }
 
-    @RequestMapping(value = ["/city/listById"], method = [RequestMethod.POST])
-    fun listById(@RequestBody city: City) : MyResponse<List<City>> {
-        var response = MyResponse(201, "cityId为空", listOf<City>())
-        if (city.cityId.isNullOrBlank()){
-            return response
-        }
-        val list = cityMapper.queryById(city.cityId)
-        response.msg = "查询成功"
-        response.code = 200
-        response.data = list
-        return response
+    @RequestMapping(value = ["/city/queryCA"], method = [RequestMethod.POST])
+    fun queryCA(@RequestBody city: City) : MyResponse<City> {
+        val pro = cityMapper.queryCA(city.cityId)
+        return MyResponse(200, "查询成功", pro)
     }
 
     @RequestMapping(value = ["/city/list"], method = [RequestMethod.POST])
-    fun listCity(@RequestBody split: Split) : MyResponse<List<City>> {
+    fun listCity(@RequestBody split: Split) : MyResponse<Page<City>> {
         PageHelper.startPage<City>(split.pageNum?:1, split.pageSize?:20)
         val list = cityMapper.listCity()
         return MyResponse(200, "查询成功", list)

@@ -70,7 +70,7 @@ class JokeController {
         val pageNum = request["pageNum"] as Int
         val pageSize = request["pageSize"] as Int
         val themeId = request["themeId"] as String
-        if (pageNum == null || pageSize == null || themeId.isNullOrBlank()){
+        if (themeId.isNullOrBlank()){
             return MyResponse(201, "查询失败，参数错误", Page<Joke>())
         }
         PageHelper.startPage<Joke>(pageNum, pageSize)

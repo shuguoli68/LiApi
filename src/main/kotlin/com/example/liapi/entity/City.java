@@ -1,10 +1,14 @@
 package com.example.liapi.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class City {
     private int id;
     private String cityId;
     private String city;
     private String provinceId;
+    private List<Area> areas = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -36,5 +40,13 @@ public class City {
 
     public void setProvinceId(String provinceId) {
         this.provinceId = provinceId;
+    }
+
+    public List<Area> getAreas() {
+        return areas;
+    }
+
+    public void setAreas(List<Area> areas) {
+        this.areas = areas;
     }
 }

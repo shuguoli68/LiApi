@@ -4,6 +4,7 @@ import com.example.liapi.base.MyResponse
 import com.example.liapi.entity.Province
 import com.example.liapi.entity.Split
 import com.example.liapi.mapper.ProvinceMapper
+import com.github.pagehelper.Page
 import com.github.pagehelper.PageHelper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestBody
@@ -20,7 +21,7 @@ class ProvinceController {
     @RequestMapping(value = ["/province/add"], method = [RequestMethod.POST])
     fun addProvinces(@RequestBody province: Province) : MyResponse<Boolean> {
         var response = MyResponse(201, "标题或内容为空", false)
-        if (province.provinceId==null || province.province.isNullOrBlank()){
+        if (province.province.isNullOrBlank()){
             return response
         }
         val list = provinceMapper.queryById(province.provinceId)
@@ -63,18 +64,12 @@ class ProvinceController {
         return response
     }
 
-    @RequestMapping(value = ["/province/listById"], method = [RequestMethod.POST])
-    fun listProvincesById(@RequestBody province: Province) : MyResponse<List<Province>> {
-        var response = MyResponse(201, "provinceId为空", listOf<Province>())
-        if (province.provinceId==null){
-            return response
-        }
-        val list = provinceMapper.queryById(province.provinceId)
-        response.msg = "查询成功"
-        response.code = 200
-        response.data = list
-        return response
+    @RequestMapping(value = ["/province/queryPC"], method = [RequestMethod.POST])
+    fun queryPC(@RequestBody province: Province) : MyResponse<Province> {
+        val pro = provinceMapper.queryPC(province.provinceId)
+        return MyResponse(200, "查询成功", pro)
     }
+
 
     @RequestMapping(value = ["/province/list"], method = [RequestMethod.POST])
     fun listProvinces(@RequestBody split: Split) : MyResponse<List<Province>> {

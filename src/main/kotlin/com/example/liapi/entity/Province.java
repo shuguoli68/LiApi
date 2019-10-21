@@ -1,9 +1,13 @@
 package com.example.liapi.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Province {
     private int id = 0;
     private int provinceId = 0;
     private String province = "";
+    private List<City> cities = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -27,5 +31,13 @@ public class Province {
 
     public void setProvince(String province) {
         this.province = province;
+    }
+
+    public List<City> getCities() {
+        return cities;
+    }
+
+    public void setCities(List<City> cities) {
+        this.cities = cities;
     }
 }

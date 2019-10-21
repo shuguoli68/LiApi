@@ -64,6 +64,12 @@ class AreaController {
         return response
     }
 
+    @RequestMapping(value = ["/area/listById"], method = [RequestMethod.POST])
+    fun listById(@RequestBody area: Area) : MyResponse<List<Area>> {
+        val list = areaMapper.queryById(area.areaId)
+        return MyResponse(200,"查询成功",list)
+    }
+
     @RequestMapping(value = ["/area/list"], method = [RequestMethod.POST])
     fun listArea(@RequestBody split: Split) : MyResponse<List<Area>> {
         PageHelper.startPage<Area>(split.pageNum?:1, split.pageSize?:20)

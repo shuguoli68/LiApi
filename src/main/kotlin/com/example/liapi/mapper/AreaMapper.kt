@@ -26,4 +26,7 @@ interface AreaMapper {
 
     @Select("select * from `areas`")
     fun listArea():Page<Area>
+
+    @Select("SELECT * FROM `areas` WHERE cityid = #{cityId,jdbcType=VARCHAR}")
+    fun queryByCityId(cityId:String):List<Area>
 }

@@ -2,10 +2,7 @@ package com.example.liapi.mapper
 
 import com.example.liapi.entity.City
 import com.github.pagehelper.Page
-import org.apache.ibatis.annotations.Delete
-import org.apache.ibatis.annotations.Insert
-import org.apache.ibatis.annotations.Select
-import org.apache.ibatis.annotations.Update
+import org.apache.ibatis.annotations.*
 import org.springframework.stereotype.Repository
 
 @Repository
@@ -24,6 +21,21 @@ interface CityMapper {
     @Select("SELECT * FROM `cities` WHERE cityid = #{cityId,jdbcType=VARCHAR}")
     fun queryById(cityId:String):List<City>
 
+    @Select("SELECT * FROM `cities` WHERE provinceid = #{provinceId,jdbcType=VARCHAR}")
+    @Results(
+            Result(property = "cityId", column = "cityid"),
+            Result(property = "areas", column = "cityid", many = Many(select = "com.example.liapi.mapper.AreaMapper.queryByCityId")))
+    fun queryByProvinceId(provinceId:String):List<City>
+
     @Select("select * from `cities`")
+    @Results(
+            Result(property = "cityId", column = "cityid"),
+            Result(property = "areas", column = "cityid", many = Many(select = "com.example.liapi.mapper.AreaMapper.queryByCityId")))
     fun listCity():Page<City>
+
+    @Select("SELECT * FROM `cities` WHERE cityid = #{cityId,jdbcType=VARCHAR}")
+    @Results(
+            Result(property = "cityId", column = "cityid"),
+            Result(property = "areas", column = "cityid", many = Many(select = "com.example.liapi.mapper.AreaMapper.queryByCityId")))
+    fun queryCA(cityId:String):City
 }
