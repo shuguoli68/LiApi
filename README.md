@@ -60,4 +60,6 @@ response:
 [1、jokeTheme：笑话的分类](https://github.com/shuguoli68/LiApi/blob/master/docs/jokeTheme.md)  
 [2、joke：笑话](https://github.com/shuguoli68/LiApi/blob/master/docs/joke.md)  
 [3、province：省](https://github.com/shuguoli68/LiApi/blob/master/docs/province.md)  
+[4、city：市](https://github.com/shuguoli68/LiApi/blob/master/docs/city.md)  
+[5、area：区](https://github.com/shuguoli68/LiApi/blob/master/docs/area.md)  
 
