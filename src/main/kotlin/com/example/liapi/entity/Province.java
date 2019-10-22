@@ -3,6 +3,9 @@ package com.example.liapi.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 省市区-省
+ */
 public class Province {
     private int id = 0;
     private int provinceId = 0;

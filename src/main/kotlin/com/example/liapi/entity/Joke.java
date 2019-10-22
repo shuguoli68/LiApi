@@ -1,5 +1,8 @@
 package com.example.liapi.entity;
 
+/**
+ * 笑话
+ */
 public class Joke {
     private int id = 0;
     private String jokeId = "";

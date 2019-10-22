@@ -1,5 +1,8 @@
 package com.example.liapi.entity;
 
+/**
+ * 省市区-区
+ */
 public class Area {
     private int id;
     private String areaId;

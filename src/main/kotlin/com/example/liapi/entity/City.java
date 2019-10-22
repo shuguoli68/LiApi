@@ -3,6 +3,9 @@ package com.example.liapi.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 省市区-市
+ */
 public class City {
     private int id;
     private String cityId;

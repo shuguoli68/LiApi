@@ -1,5 +1,8 @@
 package com.example.liapi.entity;
 
+/**
+ * 笑话的分类
+ */
 public class JokeTheme {
     private int id;
     private String themeId = "";
