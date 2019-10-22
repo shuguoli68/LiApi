@@ -65,4 +65,5 @@ response:
 [3、province：省](https://github.com/shuguoli68/LiApi/blob/master/docs/province.md)  
 [4、city：市](https://github.com/shuguoli68/LiApi/blob/master/docs/city.md)  
 [5、area：区](https://github.com/shuguoli68/LiApi/blob/master/docs/area.md)  
+[5、wyNews：新闻](https://github.com/shuguoli68/LiApi/blob/master/docs/wyNews.md)  
 
