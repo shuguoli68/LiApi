@@ -10,18 +10,18 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface WYNewsMapper {
-    @Insert("INSERT INTO `wy_news` VALUES(#{path,jdbcType=INTEGER},#{image,jdbcType=VARCHAR},#{title,jdbcType=VARCHAR},#{passtime,jdbcType=VARCHAR})")
+    @Insert("INSERT INTO `wy_news` VALUES(#{id},#{path},#{image},#{title},#{passtime})")
     fun addWYNews(wy_news: WYNews):Int
 
     @Delete("DELETE FROM `wy_news` WHERE path = #{path,jdbcType=VARCHAR}")
     fun delWYNews(path: String):Int
 
     @Update("UPDATE `wy_news`\n" +
-            "        SET image = #{image,jdbcType=VARCHAR}, title = #{title,jdbcType=VARCHAR}, passtime = #{passtime,jdbcType=VARCHAR}\n" +
-            "        WHERE path = #{path,jdbcType=VARCHAR}")
+            "        SET image = #{image}, title = #{title}, passtime = #{passtime}\n" +
+            "        WHERE path = #{path}")
     fun upWYNews(wy_news: WYNews):Int
 
-    @Select("SELECT * FROM `wy_news` WHERE path = #{path,jdbcType=VARCHAR}")
+    @Select("SELECT * FROM `wy_news` WHERE path = #{path}")
     fun queryById(path:String):List<WYNews>
 
     @Select("select * from `wy_news`")

@@ -19,6 +19,7 @@ public class WYNews {
      * passtime : 2019-10-22 10:00:45
      */
 
+    private int id = 0;
     private String path;
     private String image;
     private String title;
@@ -54,5 +55,13 @@ public class WYNews {
 
     public void setPasstime(String passtime) {
         this.passtime = passtime;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
