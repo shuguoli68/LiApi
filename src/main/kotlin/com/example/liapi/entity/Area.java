@@ -1,12 +1,20 @@
 package com.example.liapi.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * 省市区-区
  */
+@ApiModel(value = "Area",description = "省市区-区")
 public class Area {
+    @ApiModelProperty(value = "表自增的id")
     private int id;
+    @ApiModelProperty(value = "区的id")
     private String areaId;
+    @ApiModelProperty(value = "区的名称")
     private String area;
+    @ApiModelProperty(value = "区所在市的id")
     private String cityId;
 
     public int getId() {
