@@ -1,5 +1,9 @@
 package com.example.liapi.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value = "User",description = "用户")
 public class User {
 
     /**
@@ -12,14 +16,32 @@ public class User {
      * headerImg : https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_86d58ae1.png
      * vipGrade : 6
      */
+    @ApiModelProperty(value = "表自增的id")
+    private int id = 0;
+    @ApiModelProperty(value = "手机号")
     private String phone;
+    @ApiModelProperty(value = "姓名")
     private String name;
+    @ApiModelProperty(value = "昵称")
     private String nikeName;
+    @ApiModelProperty(value = "个性签名")
     private String autograph;
+    @ApiModelProperty(value = "email邮箱")
     private String email;
+    @ApiModelProperty(value = "备注信息")
     private String remarks;
+    @ApiModelProperty(value = "头像")
     private String headerImg;
+    @ApiModelProperty(value = "等级")
     private String vipGrade;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public void setPhone(String phone) {
         this.phone = phone;

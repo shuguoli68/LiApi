@@ -1,5 +1,8 @@
 package com.example.liapi.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * 网易新闻
  * {
@@ -9,7 +12,7 @@ package com.example.liapi.entity;
  *             "passtime": "2019-10-22 10:00:45"
  *         }
  */
-
+@ApiModel(value = "WYNews",description = "新闻")
 public class WYNews {
 
     /**
@@ -18,11 +21,15 @@ public class WYNews {
      * title : 去北极的人平常都吃些什么?
      * passtime : 2019-10-22 10:00:45
      */
-
+    @ApiModelProperty(value = "表自增的id")
     private int id = 0;
+    @ApiModelProperty(value = "链接地址")
     private String path;
+    @ApiModelProperty(value = "图片地址")
     private String image;
+    @ApiModelProperty(value = "新闻标题")
     private String title;
+    @ApiModelProperty(value = "发布时间")
     private String passtime;
 
     public String getPath() {
