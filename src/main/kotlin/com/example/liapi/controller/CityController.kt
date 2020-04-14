@@ -9,18 +9,22 @@ import com.example.liapi.entity.Split
 import com.example.liapi.mapper.CityMapper
 import com.github.pagehelper.Page
 import com.github.pagehelper.PageHelper
+import io.swagger.annotations.Api
+import io.swagger.annotations.ApiOperation
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
 
+@Api(value = "AreaController", tags = arrayOf("操作Area，增删改查"))
 @RestController
 class CityController {
 
     @Autowired
     lateinit var cityMapper: CityMapper
 
+    @ApiOperation(value = "增加city")
     @RequestMapping(value = ["/city/add"], method = [RequestMethod.POST])
     fun addCity(@RequestBody city: City) : MyResponse<Boolean> {
         var response = MyResponse(201, "标题或内容为空", false)
@@ -50,6 +54,7 @@ class CityController {
         return response
     }
 
+    @ApiOperation(value = "删除city")
     @RequestMapping(value = ["/city/del"], method = [RequestMethod.POST])
     fun delCity(@RequestBody city: City) : MyResponse<Boolean> {
         var response = MyResponse(201, "CityId为空", false)
@@ -67,12 +72,14 @@ class CityController {
         return response
     }
 
-    @RequestMapping(value = ["/city/queryCA"], method = [RequestMethod.POST])
+    @ApiOperation(value = "查询city")
+    @RequestMapping(value = ["/city/query"], method = [RequestMethod.POST])
     fun queryCA(@RequestBody city: City) : MyResponse<City> {
         val pro = cityMapper.queryCA(city.cityId)
         return MyResponse(200, "查询成功", pro)
     }
 
+    @ApiOperation(value = "city列表")
     @RequestMapping(value = ["/city/list"], method = [RequestMethod.POST])
     fun listCity(@RequestBody split: Split) : MyResponse<Page<City>> {
         PageHelper.startPage<City>(split.pageNum?:1, split.pageSize?:20)

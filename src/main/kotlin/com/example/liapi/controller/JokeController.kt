@@ -7,18 +7,22 @@ import com.example.liapi.entity.Split
 import com.example.liapi.mapper.JokeMapper
 import com.github.pagehelper.Page
 import com.github.pagehelper.PageHelper
+import io.swagger.annotations.Api
+import io.swagger.annotations.ApiOperation
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
 
+@Api(value = "AreaController", tags = arrayOf("操作Area，增删改查"))
 @RestController
 class JokeController {
 
     @Autowired
     lateinit var jokeMapper: JokeMapper
 
+    @ApiOperation(value = "增加joke")
     @RequestMapping(value = ["/joke/add"], method = [RequestMethod.POST])
     fun addJoke(@RequestBody joke: Joke) : MyResponse<Boolean> {
         var response = MyResponse(201, "标题或内容为空", false)
@@ -48,6 +52,7 @@ class JokeController {
         return response
     }
 
+    @ApiOperation(value = "删除joke")
     @RequestMapping(value = ["/joke/del"], method = [RequestMethod.POST])
     fun delJoke(@RequestBody joke: Joke) : MyResponse<Boolean> {
         var response = MyResponse(201, "JokeId为空", false)
@@ -65,6 +70,7 @@ class JokeController {
         return response
     }
 
+    @ApiOperation(value = "某主题下的所有joke")
     @RequestMapping(value = ["/joke/listByThemeId"], method = [RequestMethod.POST])
     fun listByThemeId(@RequestBody request:Map<String, Any>) : MyResponse<List<Joke>> {
         val pageNum = request["pageNum"] as Int
@@ -78,6 +84,7 @@ class JokeController {
         return MyResponse(200, "查询成功", list)
     }
 
+    @ApiOperation(value = "查询joke")
     @RequestMapping(value = ["/joke/listById"], method = [RequestMethod.POST])
     fun listById(@RequestBody joke: Joke) : MyResponse<List<Joke>> {
         var response = MyResponse(201, "JokeId为空", listOf<Joke>())
@@ -91,6 +98,7 @@ class JokeController {
         return response
     }
 
+    @ApiOperation(value = "joke列表")
     @RequestMapping(value = ["/joke/list"], method = [RequestMethod.POST])
     fun listJoke(@RequestBody split: Split) : MyResponse<List<Joke>> {
         PageHelper.startPage<Joke>(split.pageNum?:1, split.pageSize?:20)

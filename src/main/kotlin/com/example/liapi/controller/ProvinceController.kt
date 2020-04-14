@@ -6,18 +6,22 @@ import com.example.liapi.entity.Split
 import com.example.liapi.mapper.ProvinceMapper
 import com.github.pagehelper.Page
 import com.github.pagehelper.PageHelper
+import io.swagger.annotations.Api
+import io.swagger.annotations.ApiOperation
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
 
+@Api(value = "AreaController", tags = arrayOf("操作Area，增删改查"))
 @RestController
 class ProvinceController {
 
     @Autowired
     lateinit var provinceMapper: ProvinceMapper
 
+    @ApiOperation(value = "增加province")
     @RequestMapping(value = ["/province/add"], method = [RequestMethod.POST])
     fun addProvinces(@RequestBody province: Province) : MyResponse<Boolean> {
         var response = MyResponse(201, "标题或内容为空", false)
@@ -47,6 +51,7 @@ class ProvinceController {
         return response
     }
 
+    @ApiOperation(value = "删除province")
     @RequestMapping(value = ["/province/del"], method = [RequestMethod.POST])
     fun delProvinces(@RequestBody province: Province) : MyResponse<Boolean> {
         var response = MyResponse(201, "ProvincesId为空", false)
@@ -64,13 +69,14 @@ class ProvinceController {
         return response
     }
 
+    @ApiOperation(value = "查询province")
     @RequestMapping(value = ["/province/queryPC"], method = [RequestMethod.POST])
     fun queryPC(@RequestBody province: Province) : MyResponse<Province> {
         val pro = provinceMapper.queryPC(province.provinceId)
         return MyResponse(200, "查询成功", pro)
     }
 
-
+    @ApiOperation(value = "province列表")
     @RequestMapping(value = ["/province/list"], method = [RequestMethod.POST])
     fun listProvinces(@RequestBody split: Split) : MyResponse<List<Province>> {
         PageHelper.startPage<Province>(split.pageNum?:1, split.pageSize?:20)
