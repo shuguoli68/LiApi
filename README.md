@@ -13,6 +13,8 @@
 UniServer数据库更新：20191021  
   
 数据库数据：db_li_api.sql
+
+Swagger接口：http://127.0.0.1:8086/doc.html
   
 ### 接口示例  
 url:

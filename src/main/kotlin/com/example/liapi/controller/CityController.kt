@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
 
-@Api(value = "AreaController", tags = arrayOf("操作Area，增删改查"))
+@Api(value = "CityController", tags = arrayOf("操作City，增删改查"))
 @RestController
 class CityController {
 
