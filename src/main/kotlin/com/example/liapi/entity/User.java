@@ -6,18 +6,11 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(value = "User",description = "用户")
 public class User {
 
-    /**
-     * phone : 13888888888
-     * name : peakchao
-     * nikeName : 飞翔的水牛
-     * autograph : 没有个性，没有签名
-     * email : 123456@qq.com
-     * remarks : 这是一个备注，啦啦啦啦~
-     * headerImg : https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_86d58ae1.png
-     * vipGrade : 6
-     */
+
     @ApiModelProperty(value = "表自增的id")
     private int id = 0;
+    @ApiModelProperty(value = "用户Id")
+    private String userId;
     @ApiModelProperty(value = "手机号")
     private String phone;
     @ApiModelProperty(value = "姓名")
@@ -41,6 +34,14 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public void setPhone(String phone) {

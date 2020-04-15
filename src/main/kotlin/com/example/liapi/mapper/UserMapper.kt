@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface UserMapper {
-    @Insert("INSERT INTO `user` VALUES(#{id},#{phone},#{name},#{nickname},#{autograph},#{email},#{remarks},#{headerImg},#{vipGrade})")
+    @Insert("INSERT INTO `user` VALUES(#{id},#{userId},#{phone},#{name},#{nickname},#{autograph},#{email},#{remarks},#{headerImg},#{vipGrade})")
     fun addUser(user: User):Int
 
     @Delete("DELETE FROM `user` WHERE phone = #{phone}")
@@ -21,7 +21,7 @@ interface UserMapper {
             "        WHERE phone = #{phone}")
     fun upUser(user: User):Int
 
-    @Select("SELECT * FROM `user` WHERE phone = #{phone}")
+    @Select("SELECT * FROM `user` WHERE user_id = #{userId}")
     fun queryById(userId:String):List<User>
 
     @Select("select * from `user`")
