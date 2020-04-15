@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @Api(value = "CityController", tags = arrayOf("操作City，增删改查"))
 @RestController
-class CityController {
+class CityCtl {
 
     @Autowired
     lateinit var cityMapper: CityMapper

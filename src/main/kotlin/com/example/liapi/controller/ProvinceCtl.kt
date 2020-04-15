@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @Api(value = "ProvinceController", tags = arrayOf("操作province，增删改查"))
 @RestController
-class ProvinceController {
+class ProvinceCtl {
 
     @Autowired
     lateinit var provinceMapper: ProvinceMapper

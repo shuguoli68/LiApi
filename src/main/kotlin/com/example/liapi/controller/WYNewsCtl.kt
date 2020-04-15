@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @Api(value = "WYNewsController", tags = arrayOf("操作WYNews，增删改查"))
 @RestController
-class WYNewsController {
+class WYNewsCtl {
 
     @Autowired
     lateinit var wyNewsMapper: WYNewsMapper

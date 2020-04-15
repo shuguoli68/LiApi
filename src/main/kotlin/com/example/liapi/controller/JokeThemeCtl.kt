@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @Api(value = "JokeThemeController", tags = arrayOf("操作jokeTheme，增删改查"))
 @RestController
-class JokeThemeController {
+class JokeThemeCtl {
 
     @Autowired
     lateinit var jokeThemeMapper: JokeThemeMapper

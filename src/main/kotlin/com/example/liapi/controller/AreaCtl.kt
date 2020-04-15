@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @Api(value = "AreaController", tags = arrayOf("操作Area，增删改查"))
 @RestController
-class AreaController {
+class AreaCtl {
 
     @Autowired
     lateinit var areaMapper: AreaMapper

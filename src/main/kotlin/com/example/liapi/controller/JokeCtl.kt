@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @Api(value = "JokeController", tags = arrayOf("操作joke，增删改查"))
 @RestController
-class JokeController {
+class JokeCtl {
 
     @Autowired
     lateinit var jokeMapper: JokeMapper
