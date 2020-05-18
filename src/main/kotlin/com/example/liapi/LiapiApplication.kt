@@ -4,6 +4,7 @@ import com.example.liapi.controller.JokeThemeCtl
 import com.example.liapi.entity.JokeTheme
 import org.mybatis.spring.annotation.MapperScan
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.builder.SpringApplicationBuilder
 import org.springframework.boot.runApplication
 
 @MapperScan("com.example.liapi.mapper")
@@ -15,6 +16,11 @@ fun main(args: Array<String>) {
 //    Thread{
 //        addJokeTheme()
 //    }.start()
+}
+
+@Override
+fun configure(builder: SpringApplicationBuilder) : SpringApplicationBuilder {
+    return builder.sources(LiapiApplication::class.java)
 }
 
 private fun addJokeTheme(){
